@@ -17,14 +17,14 @@ const App = () => {
 			<Navbar />
 			<div>
 				<Switch>
-					<Route path='/pdf'>
+					{/* <Route path='/pdf'>
 						<UploadPDF
 							text={text}
 							setText={setText}
 							show={show}
 							setShow={setShow}
 						/>
-					</Route>
+					</Route> */}
 					<Route path='/text'>
 						<CopyText
 							text={text}
@@ -34,7 +34,13 @@ const App = () => {
 						/>
 					</Route>
 					<Route path='/'>
-						<Home />
+						<CopyText
+							text={text}
+							setText={setText}
+							show={show}
+							setShow={setShow}
+						/>
+						{/* <Home /> */}
 					</Route>
 				</Switch>
 			</div>
