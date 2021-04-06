@@ -43,7 +43,7 @@ const Player = ({ text, show, setShow }) => {
 	const handlePrev = () => {
 		setPlay(false)
 		clearInterval(countRef.current)
-		setCount((count) => Math.max(count - 1, listOfWords.length - 1))
+		setCount((count) => Math.min(count - 1, listOfWords.length - 1))
 	}
 
 	const handleNext = () => {
