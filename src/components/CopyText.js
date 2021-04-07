@@ -83,7 +83,7 @@ const CopyText = ({ text, setText, show, setShow, speed, setSpeed }) => {
 				<Slider
 					style={{ width: '50vw' }}
 					value={speed}
-					valueLabelDisplay='on'
+					valueLabelDisplay='off'
 					step={40}
 					min={100}
 					max={220}
