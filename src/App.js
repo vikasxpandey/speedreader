@@ -11,6 +11,7 @@ import corpus from './corpus'
 const App = () => {
 	const [show, setShow] = useState(false)
 	const [text, setText] = useState(corpus)
+	const [speed, setSpeed] = useState(140)
 
 	return (
 		<>
@@ -39,12 +40,14 @@ const App = () => {
 							setText={setText}
 							show={show}
 							setShow={setShow}
+							speed={speed}
+							setSpeed={setSpeed}
 						/>
 						{/* <Home /> */}
 					</Route>
 				</Switch>
 			</div>
-			<Player text={text} show={show} setShow={setShow} />
+			<Player text={text} show={show} setShow={setShow} speed={speed} />
 			<Typography
 				variant='caption'
 				align='center'

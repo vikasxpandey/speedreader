@@ -1,12 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles'
 import Fab from '@material-ui/core/Fab'
 import Button from '@material-ui/core/Button'
+import Slider from '@material-ui/core/Slider'
+import Typography from '@material-ui/core/Typography'
 import corpus from '../corpus'
 
 const useStyles = makeStyles((theme) => ({
 	textarea: {
 		width: '100%',
-		height: '50vh'
+		height: '40vh'
 	},
 	wrap: {
 		padding: theme.spacing(3),
@@ -24,11 +26,33 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(1)
 	},
 	bottom: {
-		marginTop: theme.spacing(5)
+		marginTop: theme.spacing(2),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
 	}
 }))
 
-const CopyText = ({ text, setText, show, setShow }) => {
+const marks = [
+	{
+		value: 100,
+		label: '600'
+	},
+	{
+		value: 140,
+		label: '430'
+	},
+	{
+		value: 180,
+		label: '330'
+	},
+	{
+		value: 220,
+		label: '270'
+	}
+]
+
+const CopyText = ({ text, setText, show, setShow, speed, setSpeed }) => {
 	const classes = useStyles()
 
 	return (
@@ -55,6 +79,18 @@ const CopyText = ({ text, setText, show, setShow }) => {
 				</Button>
 			</div>
 			<div className={classes.bottom}>
+				<Typography variant='caption'>Words per Minute</Typography>
+				<Slider
+					style={{ width: '50vw' }}
+					// defaultValue={speed}
+					value={speed}
+					valueLabelDisplay='off'
+					step={40}
+					max={220}
+					min={100}
+					marks={marks}
+					onChange={(e, v) => setSpeed(v)}
+				/>
 				<Fab
 					disabled={!text.length}
 					color='secondary'

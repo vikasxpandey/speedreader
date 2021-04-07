@@ -12,6 +12,7 @@ import Pause from '@material-ui/icons/Pause'
 import Close from '@material-ui/icons/Close'
 import Prev from '@material-ui/icons/SkipPrevious'
 import Next from '@material-ui/icons/SkipNext'
+import Reset from '@material-ui/icons/RotateLeft'
 
 const useStyles = makeStyles((theme) => ({
 	backdrop: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }))
 
-const Player = ({ text, show, setShow }) => {
+const Player = ({ text, show, setShow, speed }) => {
 	const classes = useStyles()
 	const countRef = useRef(null)
 
@@ -33,7 +34,7 @@ const Player = ({ text, show, setShow }) => {
 			setPlay(true)
 			countRef.current = setInterval(() => {
 				setCount((count) => Math.min(count + 1, listOfWords.length - 1))
-			}, 170)
+			}, speed)
 		} else {
 			setPlay(false)
 			clearInterval(countRef.current)
@@ -58,6 +59,12 @@ const Player = ({ text, show, setShow }) => {
 		setShow(!show)
 	}
 
+	const handleReset = () => {
+		setPlay(false)
+		clearInterval(countRef.current)
+		setCount(0)
+	}
+
 	return (
 		<Backdrop className={classes.backdrop} open={show}>
 			<Card>
@@ -73,6 +80,11 @@ const Player = ({ text, show, setShow }) => {
 					</Button>
 					<Button onClick={handleNext}>
 						<Next />
+					</Button>
+				</CardActions>
+				<CardActions style={{ justifyContent: 'space-between' }}>
+					<Button onClick={handleReset}>
+						<Reset />
 					</Button>
 					<Button onClick={handleClose}>
 						<Close />
