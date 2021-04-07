@@ -82,14 +82,14 @@ const CopyText = ({ text, setText, show, setShow, speed, setSpeed }) => {
 				<Typography variant='caption'>Words per Minute</Typography>
 				<Slider
 					style={{ width: '50vw' }}
-					// defaultValue={speed}
 					value={speed}
-					valueLabelDisplay='off'
+					valueLabelDisplay='on'
 					step={40}
-					max={220}
 					min={100}
+					max={220}
 					marks={marks}
 					onChange={(e, v) => setSpeed(v)}
+					track={false}
 				/>
 				<Fab
 					disabled={!text.length}
